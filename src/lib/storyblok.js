@@ -1,30 +1,30 @@
-import { apiPlugin, storyblokInit } from '@storyblok/react/rsc';
+"use client";
+import { storyblokInit, apiPlugin } from "@storyblok/react";
+import Header from "@/components/sb/Header";
+import Footer from "@/components/sb/Footer";
+import Hero from "@/components/sb/Hero";
+import ImageBanner from "@/components/sb/ImageBanner";
+import ImageWithText from "@/components/sb/ImageWithText";
+import SearchBar from "@/components/sb/SearchBar";
+import ProductList from "@/components/sb/ProductList";
+import LatestProductsList from "@/components/sb/LatestProductsList";
 
-import Page from '@/components/sb/Page';
-import Teaser from '@/components/sb/Teaser';
-import Feature from '@/components/sb/Feature';
-import Grid from '@/components/sb/Grid';
-import DoesNotExist from '@/components/sb/DoesNotExist';
-import Hero from '@/components/sb/Hero';
 export const components = {
-    // Add your components here
-    page: Page,
-    feature: Feature,
-    grid: Grid,
-    teaser: Teaser,
-    hero: Hero,
-    doesNotExist: DoesNotExist
-  };
+  header: Header,
+  footer: Footer,
+  hero: Hero,
+  imageBanner: ImageBanner,
+  imageWithText: ImageWithText,
+  searchBar: SearchBar,
+  productList: ProductList,
+  latestProductsList: LatestProductsList,
+};
 
-  /**
-   * Get the Storyblok API exports a StoryblokApi object to be used in the application
-   * @returns {StoryblokApi}
-   */
-  export const getStoryblokApi = storyblokInit({
-	accessToken: process.env.STORYBLOK_DELIVERY_API_ACCESS_TOKEN || process.env.NEXT_PUBLIC_STORYBLOK_DELIVERY_API_ACCESS_TOKEN,
-	use: [apiPlugin],
-	apiOptions: {
-		region: 'eu',
-	},
-    components
-});
+export function initStoryblok() {
+  storyblokInit({
+    accessToken: process.env.STORYBLOK_TOKEN, 
+    use: [apiPlugin],
+    components,
+    apiOptions: { region: "eu" },
+  });
+}
