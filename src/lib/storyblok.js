@@ -10,21 +10,17 @@ import ProductList from "@/components/sb/ProductList";
 import LatestProductsList from "@/components/sb/LatestProductsList";
 
 export const components = {
-  header: Header,
-  footer: Footer,
+  header: Header, 
+  footer: Footer, 
   hero: Hero,
-  imageBanner: ImageBanner,
+  imageBanner: ImageBanner, 
   imageWithText: ImageWithText,
-  searchBar: SearchBar,
-  productList: ProductList,
+  searchBar: SearchBar, 
+  productList: ProductList, 
   latestProductsList: LatestProductsList,
 };
 
 export function initStoryblok() {
-  storyblokInit({
-    accessToken: process.env.STORYBLOK_TOKEN, 
-    use: [apiPlugin],
-    components,
-    apiOptions: { region: "eu" },
-  });
+  storyblokInit({ accessToken: process.env.STORYBLOK_TOKEN, use:[apiPlugin], components, apiOptions:{region:"eu"} });
 }
+
