@@ -6,6 +6,7 @@ import Page from "@/components/sb/Page";
 import Teaser from "@/components/sb/Teaser";
 import Feature from "@/components/sb/Feature";
 import Grid from "@/components/sb/Grid";
+import DoesNotExist from '@/components/sb/DoesNotExist';
 
 // e-commerce-blocken
 import Header from "@/components/sb/Header";
@@ -27,6 +28,7 @@ export const components = {
   footer: Footer,
   hero: Hero,
   imageBanner: ImageBanner,
+  doesNotExist: DoesNotExist,
   imageWithText: ImageWithText,
   searchBar: SearchBar,
   productList: ProductList,
