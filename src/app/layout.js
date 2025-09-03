@@ -1,18 +1,25 @@
 import "./globals.css";
-import { getStoryblokApi } from "@/lib/storyblok";
-import { StoryblokComponent } from "@storyblok/react/rsc";
+import { getStoryblokApi, StoryblokComponent } from "@/lib/storyblok";
 
 export default async function RootLayout({ children }) {
   const sb = getStoryblokApi();
-  const { data } = await sb.get("cdn/stories/config", { version: "draft" }).catch(()=>({}));
-  const cfg = data?.story?.content;
+  let cfg;
+  try {
+    const { data } = await sb.get("cdn/stories/config", { version: "draft" });
+    cfg = data?.story?.content;
+  } catch {
+    cfg = null;
+  }
+
+  const renderMaybe = (blok) => (blok ? <StoryblokComponent blok={blok} /> : null);
 
   return (
     <html lang="sv">
-      <body>
-        {cfg?.header && <StoryblokComponent blok={cfg.header} />}
+      <body className="bg-white text-black">
+        {renderMaybe(cfg?.topStrip)}
+        {renderMaybe(cfg?.header)}
         <main>{children}</main>
-        {cfg?.footer && <StoryblokComponent blok={cfg.footer} />}
+        {renderMaybe(cfg?.footer)}
       </body>
     </html>
   );

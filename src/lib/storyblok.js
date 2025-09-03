@@ -14,8 +14,8 @@ import SearchBar from "@/components/sb/SearchBar";
 import ProductList from "@/components/sb/ProductList";
 import LatestProductsList from "@/components/sb/LatestProductsList";
 import ProductMenu from "@/components/sb/ProductMenu";
+import TopStrip from "@/components/sb/TopStrip";
 
-// keys MÅSTE matcha technical names i Storyblok (små bokstäver)
 export const components = {
   page: Page,
   feature: Feature,
@@ -31,6 +31,7 @@ export const components = {
   productList: ProductList,
   latestProductsList: LatestProductsList,
   productMenu: ProductMenu,
+  topStrip: TopStrip,
 };
 
 // Initiera Storyblok en gång
