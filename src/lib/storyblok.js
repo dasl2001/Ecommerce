@@ -34,15 +34,12 @@ export const components = {
   topStrip: TopStrip,
 };
 
-// Initiera Storyblok en gång
-storyblokInit({
-  accessToken:
-    process.env.STORYBLOK_DELIVERY_API_ACCESS_TOKEN ||
-    process.env.NEXT_PUBLIC_STORYBLOK_DELIVERY_API_ACCESS_TOKEN,
-  use: [apiPlugin],
-  apiOptions: { region: "eu" },
-  components,
+// Initiera Storyblok en gångg
+export const getStoryblokApi = storyblokInit({
+	accessToken: process.env.STORYBLOK_DELIVERY_API_ACCESS_TOKEN || process.env.NEXT_PUBLIC_STORYBLOK_DELIVERY_API_ACCESS_TOKEN,
+	use: [apiPlugin],
+	apiOptions: {
+		region: 'eu',
+	},
+    components
 });
-
-export { getStoryblokApi, StoryblokComponent } from "@storyblok/react/rsc";
-

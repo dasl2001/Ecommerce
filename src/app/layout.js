@@ -1,5 +1,5 @@
 import "./globals.css";
-import { getStoryblokApi, StoryblokComponent } from "@/lib/storyblok";
+import { getStoryblokApi } from "@/lib/storyblok";
 
 export default async function RootLayout({ children }) {
   const sb = getStoryblokApi();
