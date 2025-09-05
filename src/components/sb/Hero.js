@@ -1,42 +1,49 @@
-export default function Hero({ blok }) {
-  const categories = ["Home", "Away", "Retro", "Limited", "Football Jersey"];
+import Image from "next/image";
+import Link from "next/link";
 
+export default function Hero({ blok }) {
   return (
-    <section className="bg-white py-12 border-b">
-      <div className="mx-auto max-w-6xl px-4">
+    <section className="bg-white border-b">
+      <div className="mx-auto max-w-6xl px-4 py-12 text-center">
         {/* Rubrik + text */}
-        <header className="text-left">
-          <h1 className="text-3xl font-semibold">{blok?.title || "Shop Football Jerseys"}</h1>
+        <header>
+          <h1 className="text-3xl font-semibold">
+            {blok?.title || "Shop Football Jerseys"}
+          </h1>
           {blok?.text && (
-            <p className="mt-2 text-sm text-neutral-600 max-w-2xl">{blok.text}</p>
+            <p className="mt-2 text-sm text-neutral-600 max-w-2xl mx-auto">
+              {blok.text}
+            </p>
           )}
         </header>
 
-        {/* Meny – bara knappar (Football Jersey "visar alla") */}
-        <nav className="mt-6 flex flex-wrap gap-2">
-          {categories.map((label) => (
-            <button
-              key={label}
-              type="button"
-              className="border rounded px-3 py-1 text-sm hover:bg-neutral-50"
-            >
-              {label}
-            </button>
-          ))}
-        </nav>
-
-        {/* Sort – bara text, ingen funktion */}
-        <div className="mt-4 flex justify-end">
-          <button
-            type="button"
-            className="border rounded px-3 py-1 text-sm cursor-default"
-            aria-disabled="true"
+        {/* CTA-länk till Products */}
+        <div className="mt-6">
+          <Link
+            href="/products"
+            className="inline-flex rounded-md border px-6 py-3 text-sm hover:bg-neutral-50"
           >
-            Sort by <span className="font-semibold ml-1">Popular</span>
-          </button>
+            Browse Products
+          </Link>
         </div>
       </div>
+
+      {/* Hero-bilden */}
+      {blok?.image?.filename && (
+        <div className="relative mx-auto max-w-6xl px-4 pb-12">
+          <div className="relative aspect-[16/6] w-full overflow-hidden rounded-xl bg-gray-100 md:aspect-[16/5] lg:aspect-[16/4]">
+            <Image
+              src={`${blok.image.filename}/m/1600x900`}
+              alt={blok.image.alt || ""}
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
+
 

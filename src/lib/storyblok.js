@@ -15,8 +15,10 @@ import ImageWithText from "@/components/sb/ImageWithText";
 import SearchBar from "@/components/sb/SearchBar";
 import ProductList from "@/components/sb/ProductList";
 import LatestProductsList from "@/components/sb/LatestProductsList";
-import ProductMenu from "@/components/sb/ProductMenu";
+import ProductGrid from "@/components/sb/ProductGrid";
 import TopStrip from "@/components/sb/TopStrip";
+import AddToCartButton from "@/components/sb/AddToCartButton";
+
 
 export const components = {
   page: Page,
@@ -32,8 +34,9 @@ export const components = {
   searchBar: SearchBar,
   productList: ProductList,
   latestProductsList: LatestProductsList,
-  productMenu: ProductMenu,
+  productGrid: ProductGrid,
   topStrip: TopStrip,
+  addToCartButton: AddToCartButton,
 };
 
 // Initiera Storyblok en gång
