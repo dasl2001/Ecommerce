@@ -18,6 +18,8 @@ import LatestProductsList from "@/components/sb/LatestProductsList";
 import ProductGrid from "@/components/sb/ProductGrid";
 import TopStrip from "@/components/sb/TopStrip";
 import AddToCartButton from "@/components/sb/AddToCartButton";
+import ShopMenu from "@/components/sb/ShopMenu";
+import ProductsGrid from "@/components/sb/ProductsGrid";
 
 
 export const components = {
@@ -37,6 +39,8 @@ export const components = {
   productGrid: ProductGrid,
   topStrip: TopStrip,
   addToCartButton: AddToCartButton,
+  ShopMenu: ShopMenu,
+  ProductsGrid: ProductsGrid,
 };
 
 // Initiera Storyblok en gång
