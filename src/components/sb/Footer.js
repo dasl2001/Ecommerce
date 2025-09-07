@@ -13,9 +13,12 @@ export default function Footer({ blok }) {
   };
 
   return (
-    <footer className="bg-neutral-100 border-t">
-      <div className="mx-auto max-w-6xl px-4 py-12">
-        <div className="mb-10 max-w-sm">
+    <footer className="bg-neutral-100 border-t flex justify-center">
+      <div
+        className="w-[1400px] h-[419px] px-8 py-12 flex flex-col justify-between"
+      >
+        {/* Newsletter */}
+        <div className="mb-6 max-w-sm">
           <h3 className="text-lg font-semibold">
             {blok.newsletter_title || "Sign up for our newsletter"}
           </h3>
@@ -24,7 +27,6 @@ export default function Footer({ blok }) {
               "Be the first to know about special offers and new releases."}
           </p>
 
-          {/* Form */}
           <form onSubmit={handleSubmit} className="mt-3 flex gap-2">
             <input
               type="email"
@@ -51,9 +53,7 @@ export default function Footer({ blok }) {
               <ul className="space-y-1 text-sm">
                 {(col.links || []).map((l) => (
                   <li key={l._uid}>
-                    <a
-                      className="text-black hover:underline cursor-default pointer-events-none"
-                    >
+                    <a className="text-black hover:underline cursor-default pointer-events-none">
                       {l.label}
                     </a>
                   </li>
@@ -65,7 +65,7 @@ export default function Footer({ blok }) {
 
         {/* Copyright */}
         {blok.copyright && (
-          <div className="mt-10 text-center text-xs text-neutral-500">
+          <div className="text-center text-xs text-neutral-500">
             {blok.copyright}
           </div>
         )}

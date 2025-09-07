@@ -1,9 +1,7 @@
-// app/products/[slug]/page.js
 import { getStoryblokApi } from "@/lib/storyblok";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import AddToCartButton from "@/components/sb/AddToCartButton";
-
 
 // Helper: Storyblok Richtext -> plain text (ingen <p>)
 function richTextToPlain(richtext) {
@@ -39,7 +37,7 @@ export default async function ProductPage({ params }) {
     c.image?.filename ||
     (Array.isArray(c.images) && c.images[0]?.filename) ||
     null;
-  const img = filename ? `${norm(filename)}/m/1000x1334` : null;
+  const img = filename ? norm(filename) : null;
 
   // Beskrivning (plain text)
   const descPlain = c.description ? richTextToPlain(c.description) : "";
@@ -56,23 +54,27 @@ export default async function ProductPage({ params }) {
     (v.startsWith("#") ||
       [
         "black","white","red","blue","green","yellow",
-        "orange","purple","pink","brown","gray","grey",
+        "orange","purple","navy","brown","gray","grey",
       ].includes(v.toLowerCase()));
 
   // Storlekar som knappar
   const sizes = Array.isArray(c.sizes) && c.sizes.length > 0 ? c.sizes : ["XS","S","M","L","XL"];
 
   return (
-    <div className="mx-auto max-w-6xl grid gap-10 px-4 py-12 md:grid-cols-2">
+    <div
+      className="mx-auto max-w-6xl grid gap-10 px-4 py-12
+                 md:grid-cols-[554px_1fr]"  // lås första kolumnen till 554px
+    >
       {/* Bild */}
-      <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-gray-100">
+      <div className="relative w-full h-[554px] overflow-hidden rounded-xl bg-gray-100 mx-auto">
         {img && (
           <Image
             src={img}
             alt={c.image?.alt || c.name || story.name}
             fill
-            className="object-cover"
+            className="object-cover object-center"
             priority
+            sizes="(min-width:768px) 554px, 100vw"
           />
         )}
       </div>
@@ -102,7 +104,7 @@ export default async function ProductPage({ params }) {
           </div>
         )}
 
-        {/* Beskrivning (utan <p>) */}
+        {/* Beskrivning */}
         {descPlain && (
           <div className="mt-6 text-sm text-neutral-700 whitespace-pre-line">
             {descPlain}
@@ -137,11 +139,20 @@ export default async function ProductPage({ params }) {
         </div>
 
         {/* Add to cart */}
-        <AddToCartButton product={{ id: story.id, slug: story.full_slug, name: c.name || story.name, price: c.price }} />
+        <AddToCartButton
+          product={{
+            id: story.id,
+            slug: story.full_slug,
+            name: c.name || story.name,
+            price: c.price,
+          }}
+        />
       </div>
     </div>
   );
 }
+
+
 
 
 

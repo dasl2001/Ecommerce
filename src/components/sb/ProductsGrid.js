@@ -4,23 +4,18 @@ import Image from "next/image";
 
 const norm = (u) => (u ? (u.startsWith("//") ? `https:${u}` : u) : null);
 
-/**
- * props:
- *  - perPage (number)
- *  - category: 'all' | 'home' | 'away' | 'retro' | 'limited'
- */
 export default async function ProductsGrid({ perPage = 8, category = "all" }) {
   const sb = getStoryblokApi();
 
   const query = {
     starts_with: "products/",
-    content_type: "productDetailPage", // byt om ditt tekniska namn skiljer
-    version: "draft",
+    content_type: "productDetailPage", // ändra om din typ heter något annat
+    version: "draft",                  // byt till "published" i prod
     per_page: perPage,
     sort_by: "first_published_at:desc",
   };
 
-  // Filtrera på single-option fältet 'category' i produkten
+  // Filtrera på single-option fältet "category"
   if (category && category !== "all") {
     query.filter_query = { category: { in: category } };
   }
@@ -37,24 +32,34 @@ export default async function ProductsGrid({ perPage = 8, category = "all" }) {
             c.image?.filename ||
             (Array.isArray(c.images) && c.images[0]?.filename) ||
             null;
-          const src = filename ? `${norm(filename)}/m/600x800` : null;
+          const src = filename ? `${norm(filename)}` : null;
 
           return (
-            <Link key={p.id} href={`/${p.full_slug}`} className="group block">
-              <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-gray-200">
+            <Link key={p.id} href={`/${p.full_slug}`} className="group block text-center">
+              {/* Bildcontainer */}
+              <div className="relative w-[265px] h-[331px] mx-auto overflow-hidden border border-gray-200 rounded-lg">
                 {src && (
                   <Image
                     src={src}
                     alt={c.image?.alt || c.name || p.name || "Product"}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    sizes="(min-width:1280px) 260px, (min-width:1024px) 25vw, 50vw"
+                    className="object-contain bg-[#f6f6f6]"
+                    sizes="150px"
                   />
                 )}
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-200"></div>
               </div>
-              <div className="mt-2 flex items-baseline justify-between">
-                <span className="text-sm font-medium">{c.name || p.name}</span>
-                {c.price && <span className="text-sm opacity-70">{c.price} kr</span>}
+
+              {/* Info */}
+              <div className="mt-2 space-y-1">
+                <div className="text-sm font-medium">{c.name || p.name}</div>
+                {c.price && (
+                  <div className="text-sm opacity-70">{c.price} kr</div>
+                )}
+                {c.size && (
+                  <div className="text-xs text-neutral-500">Size: {c.size}</div>
+                )}
               </div>
             </Link>
           );
