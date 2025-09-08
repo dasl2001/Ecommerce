@@ -1,5 +1,5 @@
+import { storyblokInit, apiPlugin, storyblokApi } from "@storyblok/react/rsc";
 
-import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
 
 
 import Page from "@/components/sb/Page";
