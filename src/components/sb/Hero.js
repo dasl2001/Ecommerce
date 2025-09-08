@@ -11,7 +11,7 @@ export default function Hero({ blok, story }) {
 
     if (typeof t === "object" && Array.isArray(t.content)) {
       return (
-        <div className="mt-2 text-sm text-neutral-600 max-w-3xl mx-auto relative z-10">
+        <div className="mt-2 text-sm text-neutral-600 max-w-3xl mx-auto relative z-20">
           {renderRichText(t)}
         </div>
       );
@@ -19,7 +19,7 @@ export default function Hero({ blok, story }) {
 
     if (typeof t === "string") {
       return (
-        <p className="mt-2 text-sm text-neutral-600 max-w-3xl mx-auto relative z-10">
+        <p className="mt-2 text-sm text-neutral-600 max-w-3xl mx-auto relative z-20">
           {t}
         </p>
       );
@@ -29,22 +29,20 @@ export default function Hero({ blok, story }) {
 
   const isAbout = story?.full_slug === "about";
 
-  const mainImg = blok?.image?.filename ? norm(blok.image.filename) : null;   // 1114x521
+  const mainImg = blok?.image?.filename ? norm(blok.image.filename) : null; // 1114x521
   const extraImg = blok?.image1?.filename ? norm(blok.image1.filename) : null; // 1400x316
 
   return (
-    <section className="bg-white border-b relative">
-      <div className="mx-auto max-w-6xl px-4 py-12 text-center relative z-10">
-        <header>
-          <h1 className="text-3xl font-semibold relative z-10">
-            {blok?.title || "Better football jerseys for the planet"}
-          </h1>
-          <TextBlock />
-        </header>
+    <section className="relative bg-white border-b" style={{ minHeight: 1300 }}>
+      {/* Text */}
+      <div className="mx-auto max-w-6xl px-4 pt-12 text-center relative z-30">
+        <h1 className="text-3xl font-semibold">
+          {blok?.title || "Better football jerseys for the planet"}
+        </h1>
+        <TextBlock />
 
-        {/* Knappen – visas ej på About */}
         {!isAbout && (
-          <div className="mt-6 relative z-20">
+          <div className="mt-6">
             <Link
               href="/products"
               className="inline-flex rounded-md border px-6 py-3 text-sm bg-white hover:bg-neutral-50 shadow-sm"
@@ -55,34 +53,46 @@ export default function Hero({ blok, story }) {
         )}
       </div>
 
-      {/* Huvudbild 1114 × 521 */}
+      {/* Huvudbild (1114x521) */}
       {mainImg && (
-        <div className="relative mx-auto max-w-6xl px-4 pb-6 flex justify-center z-0">
-          <div className="relative w-full aspect-[1114/521] lg:w-[1114px] lg:h-[521px] overflow-hidden rounded-xl bg-gray-100">
-            <Image
-              src={mainImg}
-              alt={blok.image?.alt || ""}
-              fill
-              className="object-cover object-center"
-              priority
-              sizes="(max-width:1024px) 100vw, 1114px"
-            />
-          </div>
+        <div
+          className="absolute overflow-hidden rounded-xl bg-gray-100 z-10 opacity-100"
+          style={{
+            top: 381,
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: 1114,
+            height: 521,
+          }}
+        >
+          <Image
+            src={mainImg}
+            alt={blok.image?.alt || ""}
+            fill
+            className="object-cover object-center"
+            sizes="1114px"
+            priority
+          />
         </div>
       )}
 
-      {/* Extra bild 1400 × 316 – visas när fältet image1 är ifyllt */}
+      {/* Extra bild (1400x316) */}
       {extraImg && (
-        <div className="relative mx-auto max-w-6xl px-4 pb-12 flex justify-center z-0">
-          <div className="relative w-full aspect-[1400/316] lg:w-[1400px] lg:h-[316px] overflow-hidden rounded-xl bg-gray-100">
-            <Image
-              src={extraImg}
-              alt={blok.image1?.alt || ""}
-              fill
-              className="object-cover object-center"
-              sizes="(max-width:1024px) 100vw, 1400px"
-            />
-          </div>
+        <div
+          className="absolute left-1/2 -translate-x-1/2 overflow-hidden rounded-xl bg-gray-100 z-0 opacity-100"
+          style={{
+            top: 972,
+            width: 1400,
+            height: 316,
+          }}
+        >
+          <Image
+            src={extraImg}
+            alt={blok.image1?.alt || ""}
+            fill
+            className="object-cover object-center"
+            sizes="1400px"
+          />
         </div>
       )}
     </section>

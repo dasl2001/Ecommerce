@@ -3,7 +3,6 @@ import { getStoryblokApi } from "@/lib/storyblok";
 import Link from "next/link";
 import Image from "next/image";
 
-// Helper: Storyblok Richtext -> plain text (utan <p>)
 function richTextToPlain(richtext) {
   if (!richtext) return "";
   if (typeof richtext === "object" && Array.isArray(richtext.content)) {
@@ -41,17 +40,14 @@ export default async function ProductGrid({ blok }) {
   return (
     <section className="bg-gray-50 relative">
       <div className="mx-auto max-w-6xl px-4 pt-2 pb-16">
-        {/* Rubrik */}
         <h2 className="text-center text-2xl font-semibold">{title}</h2>
 
-        {/* Text (ren, utan <p>) */}
         {textPlain && (
           <div className="mt-3 text-center text-sm text-neutral-700 max-w-2xl mx-auto whitespace-pre-line">
             {textPlain}
           </div>
         )}
 
-        {/* Länk – hög z-index så inget kan täcka den */}
         <div className="mt-5 text-center relative z-30">
           <Link
             href="/products"
@@ -61,7 +57,7 @@ export default async function ProductGrid({ blok }) {
           </Link>
         </div>
 
-        {/* GRID – extra toppmarginal + låg z-index */}
+        {/* Grid */}
         <div className="mt-24 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 relative z-0 justify-items-center">
           {products.map((p, i) => {
             const c = p.content || {};
@@ -70,15 +66,19 @@ export default async function ProductGrid({ blok }) {
               (Array.isArray(c.images) && c.images[0]?.filename) ||
               null;
             const base = filename ? norm(filename) : null;
-            const src = base ? `${base}/m/736x1042` : null; // 2x för skärpa i 368x521
+            const src = base ? `${base}/m/736x1042` : null; // dubbla upplösningen för skärpa
 
-            // Lyfter EXAKT 85px för mittenkortet (kolumn 2)
+            // Lyft det mittersta kortet (i varje rad om 3)
             const lift = i % 3 === 1 ? "-mt-[85px]" : "";
 
             return (
-              <Link key={p.id} href={`/${p.full_slug}`} className={`group block ${lift} relative z-0`}>
-                {/* Bildcontainer: mobil = proportion, desktop = 368x521 */}
-                <div className="relative w-full aspect-[368/521] overflow-hidden rounded-lg bg-gray-200 lg:w-[368px] lg:h-[521px]">
+              <Link
+                key={p.id}
+                href={`/${p.full_slug}`}
+                className={`group block ${lift} relative z-0`}
+              >
+                {/* Bildcontainer exakt 368x521 på desktop */}
+                <div className="relative overflow-hidden rounded-lg bg-gray-200 w-full aspect-[368/521] lg:w-[368px] lg:h-[521px]">
                   {src && (
                     <Image
                       src={src}
@@ -89,14 +89,17 @@ export default async function ProductGrid({ blok }) {
                       priority={i < 3}
                     />
                   )}
-                  {/* Svag overlay vid hover */}
                   <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-200" />
                 </div>
 
-                {/* Namn + pris */}
+                {/* Text under bilden */}
                 <div className="mt-3 flex items-baseline justify-between w-full lg:w-[368px]">
-                  <span className="text-sm font-medium truncate">{c.name || p.name}</span>
-                  {c.price && <span className="text-sm opacity-70">{c.price} kr</span>}
+                  <span className="text-sm font-medium truncate">
+                    {c.name || p.name}
+                  </span>
+                  {c.price && (
+                    <span className="text-sm opacity-70">{c.price} kr</span>
+                  )}
                 </div>
               </Link>
             );
@@ -106,5 +109,4 @@ export default async function ProductGrid({ blok }) {
     </section>
   );
 }
-
 
