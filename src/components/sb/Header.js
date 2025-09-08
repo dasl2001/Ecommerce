@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import SearchBar from "@/components/SearchBar";
+import SearchBar from "@/components/sb/SearchBar";
 
 /*
 // Header tar emot ett Storyblok-blok med konfiguration (logo, länkar, sökfält etc.)
