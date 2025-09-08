@@ -6,7 +6,7 @@ export default async function RootLayout({ children }) {
   const sb = getStoryblokApi();
   let cfg;
   try {
-    const { data } = await sb.get("cdn/stories/config", { version: "draft" });
+    const { data } = await sb.get("cdn/stories/about", { version: getStoryblokVersion() });
     cfg = data?.story?.content;
   } catch {
     cfg = null;

@@ -52,3 +52,8 @@ export const getStoryblokApi = storyblokInit({
 	},
     components
 });
+
+
+export function getStoryblokVersion() {
+  return process.env.NODE_ENV !== "production" ? "draft" : "published"
+}
