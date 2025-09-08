@@ -1,6 +1,7 @@
 import ServerComponent from "@/components/sb/ServerComponent";
 import "./globals.css";
-import { getStoryblokApi } from "@/lib/storyblok";
+import { getStoryblokApi, getStoryblokVersion } from "@/lib/storyblok";
+
 
 export default async function RootLayout({ children }) {
   const sb = getStoryblokApi();

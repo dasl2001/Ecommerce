@@ -1,4 +1,4 @@
-import { getStoryblokApi } from "@/lib/storyblok";
+import { getStoryblokApi, getStoryblokVersion } from "@/lib/storyblok";
 import ServerComponent from "@/components/sb/ServerComponent";
 import ShopMenu from "@/components/sb/ShopMenu";
 import ProductsGrid from "@/components/sb/ProductsGrid";
