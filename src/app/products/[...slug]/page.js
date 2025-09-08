@@ -1,4 +1,4 @@
-import { getStoryblokApi } from "@/lib/storyblok";
+import { getStoryblokApi, getStoryblokVersion } from "@/lib/storyblok";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import AddToCartButton from "@/components/sb/AddToCartButton";
@@ -23,7 +23,7 @@ export default async function ProductPage({ params }) {
   const sb = getStoryblokApi();
 
   const { data } = await sb.get(`cdn/stories/products/${slug}`, {
-    version: "draft", // byt till "published" i prod
+    version: getStoryblokVersion, 
   });
 
   const story = data?.story;

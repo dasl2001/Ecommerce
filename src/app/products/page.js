@@ -8,7 +8,7 @@ export default async function ProductsPage({ searchParams }) {
   const sb = getStoryblokApi();
 
   // Hämta sidan "products" (har Hero + Product List i body)
-  const { data } = await sb.get("cdn/stories/products", { version: "draft" });
+  const { data } = await sb.get("cdn/stories/products", { version: getStoryblokVersion() });
   const body = data?.story?.content?.body || [];
   const hero = body.find((b) => b.component === "hero");
 
