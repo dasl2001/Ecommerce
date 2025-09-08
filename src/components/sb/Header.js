@@ -1,45 +1,56 @@
-import Link from "next/link";
-import dynamic from "next/dynamic";
-
-// Search laddas bara på klienten (pga use client inuti Search.js)
-const Search = dynamic(() => import("@/components/Search"), { ssr: false });
-
 /*
-Header tar emot ett Storyblok-blok med konfiguration (logo, länkar, sökfält etc.)
+// Header tar emot ett Storyblok-blok med konfiguration (logo, länkar, sökfält etc.)
 */
 export default function Header({ blok }) {
-  // Säkerställ att links är en array (annars tom array)
-  const links = Array.isArray(blok.links) ? blok.links : [];
 
+/*
+Säkerställ att links är en array (annars tom array)
+*/
+  const links = Array.isArray(blok.links) ? blok.links : [];
   return (
+
+/* 
+Inre container med fast bredd (1400px) och höjd (60px) 
+*/    
     <header className="border-b bg-white flex justify-center">
-      {/* Inre container med fast bredd (1400px) och höjd (60px) */}
       <div className="w-[1400px] h-[60px] px-4 flex items-center gap-6">
 
-        {/* Logotyp / företagsnamn (klickbar länk till startsidan) */}
-        <Link href="/" className="font-semibold">
+{/* 
+Logotyp / företagsnamn (klickbar länk till startsidan) 
+*/}        
+        <a href="/" className="font-semibold">
           {blok.logo || "Ecommerce"}
-        </Link>
+        </a>
 
-        {/* Navigation: loopar över alla länkar från Storyblok */}
+ {/* 
+ Navigation: loopar över alla länkar från Storyblok 
+ */}        
         <nav className="flex gap-4 text-sm">
           {links.map((n) => (
-            <Link
-              key={n._uid} // unikt ID från Storyblok
-              href={`/${n.link?.cached_url || ""}`} // Storyblok hanterar URL:er via "cached_url"
+            <a
+              key={n._uid} //unikt ID från Storyblok
+              href={`/${n.link?.cached_url || ""}`} //Storyblok hanterar URL:er via "cached_url"
               className="text-neutral-700 hover:underline"
             >
               {n.label}
-            </Link>
+            </a>
           ))}
         </nav>
 
-        {/* Sökfält – ersatt med vår Search-komponent */}
-        <div className="ml-auto flex items-center gap-2">
-          <Search />
+{/* 
+Sökfält – hamnar till höger (ml-auto skjuter det längst bort) 
+*/}        
+        <div className="ml-auto flex items-center gap-2 text-sm text-neutral-500">
+          <span aria-hidden>🔍</span>
+          <input
+            className="h-8 w-48 rounded border px-3 text-sm"
+            placeholder={blok.search_placeholder || "Search"}
+          />
         </div>
 
-        {/* Kundvagns-ikon + antal (visas bara om show_cart = true i Storyblok) */}
+{/* 
+Kundvagns-ikon + antal (visas bara om show_cart = true i Storyblok)  
+*/}       
         {blok.show_cart && (
           <div className="ml-4 flex items-center text-sm">
             <span aria-hidden>👜</span>
@@ -50,5 +61,6 @@ export default function Header({ blok }) {
     </header>
   );
 }
+
 
 
