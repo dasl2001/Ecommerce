@@ -1,7 +1,6 @@
-"use client"; // Header körs på klienten (behövs för SearchBar)
-
+"use client"; 
 import Link from "next/link";
-import SearchBar from "@/components/sb/SearchBar"; // <-- lägg din sökkomponent i /components/SearchBar.js
+import SearchBar from "@/components/sb/SearchBar"; 
 
 /*
 Header tar emot ett Storyblok-blok med konfiguration (logo, länkar, sökfält etc.)
