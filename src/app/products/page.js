@@ -86,7 +86,7 @@ Själva produktgridden
       <section className="mx-auto max-w-6xl px-4 pb-16">
 
 {/* 
-Visar 9 produkter per sida och filtrerar på category 
+Visar 8 produkter per sida och filtrerar på category 
 */}
         <ProductsGrid perPage={8} category={category} />
       </section>
