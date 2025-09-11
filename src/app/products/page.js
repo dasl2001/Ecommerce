@@ -88,7 +88,7 @@ Själva produktgridden
 {/* 
 Visar 9 produkter per sida och filtrerar på category 
 */}
-        <ProductsGrid perPage={9} category={category} />
+        <ProductsGrid perPage={8} category={category} />
       </section>
     </main>
   );
