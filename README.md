@@ -1,7 +1,6 @@
-# 🛍️ CMS Grupparbete – E-commerce med Next.js & Storyblok
+# E-commerce med Next.js & Storyblok
 
-Detta repo innehåller en **e-commerce-webbplats** som byggts som en del av kursen  
-**Webb24 CMS (Nackademin)** med handledare **David Slivo**.  
+Detta repo innehåller en **e-commerce-webbplats** 
 
 Webbplatsen är uppbyggd med:
 - **Next.js (App Router)**
@@ -10,30 +9,10 @@ Webbplatsen är uppbyggd med:
 - **Storyblok CMS** (Headless)
 - **Vercel** (Deployment)
 
-🌍 **Live:** https://cms-grupparbete.vercel.app  
-📄 **Kursmaterial:** *Gruppuppgift och Individuelluppgift.pdf*  
-🖼️ Bilder från PDF:n finns under `public/images/pdf/`
-
 ---
 
-## 🧩 Kursöversikt
 
-### Komponentstruktur (ur PDF)
-![Komponentstruktur](public/images/pdf/komponentstruktur.png)
-
-### Krav för G (Godkänt)
-![Krav G](public/images/pdf/krav-g.png)
-
-### Krav för VG (Väl Godkänt)
-![Krav VG](public/images/pdf/krav-vg.png)
-
-### Storyblok-struktur
-![Storyblok Content](public/images/pdf/storyblok-content.png)
-![Blocks](public/images/pdf/blocks.png)
-
----
-
-## 🚀 Teknikstack
+## 🚀 Tekniker
 
 | Ramverk / Tjänst | Användning |
 |------------------|-------------|
@@ -46,22 +25,6 @@ Webbplatsen är uppbyggd med:
 
 ---
 
-## ⚙️ Krav från kursen
-
-### Godkänt (G)
-- Allt innehåll styrs via **Storyblok**.
-- **Header** & **Footer** hämtas från `Config`-story.
-- **robots.txt** (`app/robots.js`).
-- **Sitemap** (`app/sitemap.js`) genereras via Storyblok Links API.
-- **Deploy på Vercel**.
-- **Webhook** från Storyblok → Vercel.
-
-### Väl godkänt (VG)
-- **Meny med flera nivåer**.
-- **Sökfunktion** (client calls till Storyblok API).
-- **Dynamisk bakgrundsfärg i Hero-komponent** (redigerbar i Storyblok).
-
----
 
 ## 📂 Filstruktur
 
@@ -134,8 +97,6 @@ cms-grupparbete/
 ├─ README.md
 └─ tailwind.config.js
 
-markdown
-Kopiera kod
 
 ---
 
