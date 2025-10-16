@@ -1,27 +1,9 @@
 import { getStoryblokApi } from "@/lib/storyblok";
 import Link from "next/link";
 import Image from "next/image";
-
-/*
-Normaliserar Storyblok-URLer som ofta börjar med "//..."
-*/
 const norm = (u) => (u ? (u.startsWith("//") ? `https:${u}` : u) : null);
-
 export default async function ProductsGrid({ perPage = 8, category = "all" }) {
-
-/*
-Hämta Storyblok-API-klient
-*/
   const sb = getStoryblokApi();
-
-/*
-Bygg query för att hämta produkt-stories
-bara sidor under /products
-din komponent-typ i Storyblok
-i prod: byt till "published"
-antal att hämta
-nyaste först
-*/
   const query = {
     starts_with: "products/",
     content_type: "productDetailPage", 
@@ -29,39 +11,22 @@ nyaste först
     per_page: perPage,
     sort_by: "first_published_at:desc",
   };
-
-/*
-Filtrera på single-option fältet "category"
-*/
   if (category && category !== "all") {
     query.filter_query = { category: { in: category } };
   }
-
-/*
-Hämta data från Storyblok
-*/
   const { data } = await sb.get("cdn/stories", query);
   const products = data?.stories ?? [];
-
   return (
     <>
-{/* 
-GRID med kort 
-*/}
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {products.map((p) => {
           const c = p.content || {};
-// Hämta bild: först "image", annars första posten i "images"
           const filename =
             c.image?.filename ||
             (Array.isArray(c.images) && c.images[0]?.filename) ||
             null;
           const src = filename ? `${norm(filename)}` : null;
-
           return (
-/*
-Länka till produktsidan (bygger på p.full_slug, ex: "products/slug")
-*/
             <Link key={p.id} href={`/${p.full_slug}`} className="group block text-center">
               <div className="relative w-[265px] h-[331px] mx-auto overflow-hidden border border-gray-200 rounded-lg">
                 {src && (
@@ -73,11 +38,8 @@ Länka till produktsidan (bygger på p.full_slug, ex: "products/slug")
                     sizes="150px"
                   />
                 )}
-
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-200"></div>
               </div>
-
-
               <div className="mt-2 space-y-1">
                 <div className="text-sm font-medium">{c.name || p.name}</div>
                 {c.price && (
@@ -91,7 +53,6 @@ Länka till produktsidan (bygger på p.full_slug, ex: "products/slug")
           );
         })}
       </div>
-
       {products.length === 0 && (
         <p className="mt-10 text-center text-sm text-neutral-600">
           No products found for this category.
