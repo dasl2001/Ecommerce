@@ -1,6 +1,6 @@
 # Ecommerce med Next.js och Storyblok
 
-## Webbplatsens teknik
+## Tekniker
 
 - **Next.js (App Router)**
 - **React 19**
