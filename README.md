@@ -2,51 +2,72 @@
 
 ## Tekniker
 
-- **Next.js (App Router)**
+- **Next.js**
 - **React 19**
 - **Tailwind CSS 4**
-- **Storyblok CMS** (headless)
-- **Vercel** (deployment)
+- **Storyblok CMS** 
+- **Vercel** 
 
 ---
 
-## Storyblok-struktur
+## Filstruktur
 
-### Content Types
-- `Page`
-- `ProductPage`
-- `Config`
+```text
+Ecommerce/
+├── app/
+│   ├── about/
+│   │   └── page.js
+│   ├── api/
+│   │   └── search/
+│   │       └── route.js
+│   ├── home/
+│   │   └── page.js
+│   ├── products/
+│   │   ├── [...slug]/page.js
+│   │   └── page.js
+│   ├── layout.js
+│   ├── sitemap.js
+│   └── robots.js
+│
+├── components/
+│   └── sb/
+│       ├── AddToCartButton.js
+│       ├── DoesNotExist.js
+│       ├── Feature.js
+│       ├── Footer.js
+│       ├── Grid.js
+│       ├── Header.js
+│       ├── Hero.js
+│       ├── ImageBanner.js
+│       ├── ImageWithText.js
+│       ├── LatestProductsList.js
+│       ├── Page.js
+│       ├── ProductCard.js
+│       ├── ProductGrid.js
+│       ├── ProductList.js
+│       ├── ProductMenu.js
+│       ├── ProductsGrid.js
+│       ├── SearchBar.js
+│       ├── ServerComponent.js
+│       ├── ShopMenu.js
+│       ├── StoryBlokProvider.js
+│       ├── Teaser.js
+│       ├── TopStrip.js
+│       └── index.js
+│
+├── lib/
+│   ├── fetchers.js
+│   ├── richtextToPlain.js
+│   └── storyblok.js
+│
+├── utils/
+│   └── safeRichText.js
+│
+├── .gitignore
+├── package.json
+├── README.md
+└── tailwind.config.js
 
-### Layout Components
-- `Header`
-- `Footer`
-- `TopStrip`
-
-### Nestade komponenter (Blocks)
-- `ProductList`
-- `LatestProductsList`
-- `SearchBar`
-- `ImageBanner`
-- `Hero`
-- `ImageWithText`
-- `ShopMenu`
-
-### Komponentmappning (`lib/storyblok.js`)
-```js
-export const components = {
-  page: Page,
-  header: Header,
-  footer: Footer,
-  hero: Hero,
-  productList: ProductList,
-  latestProductsList: LatestProductsList,
-  imageBanner: ImageBanner,
-  imageWithText: ImageWithText,
-  topStrip: TopStrip,
-  searchBar: SearchBar,
-  productGrid: ProductGrid,
-  productsGrid: ProductsGrid,
-};
 
 
 
