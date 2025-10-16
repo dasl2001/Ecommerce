@@ -1,27 +1,28 @@
 # Ecommerce med Next.js och Storyblok
 
-Webbplatsen är uppbyggd med:
+## Webbplatsens teknik
+
 - **Next.js (App Router)**
 - **React 19**
 - **Tailwind CSS 4**
-- **Storyblok CMS** (Headless)
-- **Vercel** (Deployment)
+- **Storyblok CMS** (headless)
+- **Vercel** (deployment)
 
 ---
 
-## Storyblok-struktur 
+## Storyblok-struktur
 
-**Content Types:**
+### Content Types
 - `Page`
 - `ProductPage`
 - `Config`
 
-**Layout Components:**
+### Layout Components
 - `Header`
 - `Footer`
 - `TopStrip`
 
-**Nestade komponenter:**
+### Nestade komponenter (Blocks)
 - `ProductList`
 - `LatestProductsList`
 - `SearchBar`
@@ -30,7 +31,7 @@ Webbplatsen är uppbyggd med:
 - `ImageWithText`
 - `ShopMenu`
 
-Alla komponenter mappas i `lib/storyblok.js`:
+### Komponentmappning (`lib/storyblok.js`)
 ```js
 export const components = {
   page: Page,
@@ -49,42 +50,27 @@ export const components = {
 
 ---
 
-
-## Tekniker
-
-| Ramverk / Tjänst | Användning |
-|------------------|-------------|
-| **Next.js 15** | Frontend & routing (App Router) |
-| **React 19** | Komponentbaserad logik |
-| **Tailwind CSS 4** | CSS utilities |
-| **Storyblok** | CMS för innehåll & komponenter |
-| **Vercel** | Hosting & CI/CD |
-| **Boilerplate v25** | Startmall |
-
----
-
-## Filstruktur
-
-Här är hela projektets struktur, baserat på den färdiga implementationen:
+##  Filstruktur
 
 ```text
+cms-grupparbete/
 ├── app/
 │   ├── about/
-│   │   └── page.js                     
+│   │   └── page.js
 │   ├── api/
 │   │   └── search/
-│   │       └── route.js                 
+│   │       └── route.js
 │   ├── home/
-│   │   └── page.js                      
+│   │   └── page.js
 │   ├── products/
-│   │   ├── [...slug]/page.js            
-│   │   └── page.js                      
-│   ├── layout.js                        
-│   ├── sitemap.js                       
-│   └── robots.js                        
+│   │   ├── [...slug]/page.js
+│   │   └── page.js
+│   ├── layout.js
+│   ├── sitemap.js
+│   └── robots.js
 │
 ├── components/
-│   └── sb/                              
+│   └── sb/
 │       ├── AddToCartButton.js
 │       ├── DoesNotExist.js
 │       ├── Feature.js
@@ -107,15 +93,26 @@ Här är hela projektets struktur, baserat på den färdiga implementationen:
 │       ├── StoryBlokProvider.js
 │       ├── Teaser.js
 │       ├── TopStrip.js
-│       └── index.js                     
+│       └── index.js
 │
 ├── lib/
-│   ├── fetchers.js                      
-│   ├── richtextToPlain.js               
-│   └── storyblok.js                     
+│   ├── fetchers.js
+│   ├── richtextToPlain.js
+│   └── storyblok.js
 │
 ├── utils/
-│   └── safeRichText.js                  
+│   └── safeRichText.js
+│
+├── public/
+│   ├── docs/
+│   │   └── Gruppuppgift och Individuelluppgift.pdf
+│   └── images/
+│       └── pdf/
+│           ├── komponentstruktur.png
+│           ├── krav-g.png
+│           ├── krav-vg.png
+│           ├── storyblok-content.png
+│           └── blocks.png
 │
 ├── .gitignore
 ├── package.json
