@@ -50,7 +50,7 @@ export const components = {
 
 ---
 
-##  Filstruktur
+**## Storyblok-struktur**
 
 ```text
 cms-grupparbete/
