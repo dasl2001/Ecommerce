@@ -9,7 +9,48 @@ Webbplatsen är uppbyggd med:
 
 ---
 
-## 🚀 Tekniker
+## Storyblok-struktur 
+
+**Content Types:**
+- `Page`
+- `ProductPage`
+- `Config`
+
+**Layout Components:**
+- `Header`
+- `Footer`
+- `TopStrip`
+
+**Nestade komponenter:**
+- `ProductList`
+- `LatestProductsList`
+- `SearchBar`
+- `ImageBanner`
+- `Hero`
+- `ImageWithText`
+- `ShopMenu`
+
+Alla komponenter mappas i `lib/storyblok.js`:
+```js
+export const components = {
+  page: Page,
+  header: Header,
+  footer: Footer,
+  hero: Hero,
+  productList: ProductList,
+  latestProductsList: LatestProductsList,
+  imageBanner: ImageBanner,
+  imageWithText: ImageWithText,
+  topStrip: TopStrip,
+  searchBar: SearchBar,
+  productGrid: ProductGrid,
+  productsGrid: ProductsGrid,
+};
+
+---
+
+
+## Tekniker
 
 | Ramverk / Tjänst | Användning |
 |------------------|-------------|
@@ -22,7 +63,7 @@ Webbplatsen är uppbyggd med:
 
 ---
 
-## 📂 Filstruktur
+## Filstruktur
 
 Här är hela projektets struktur, baserat på den färdiga implementationen:
 
@@ -81,43 +122,3 @@ Här är hela projektets struktur, baserat på den färdiga implementationen:
 ├── README.md
 └── tailwind.config.js
 
-
----
-
-## 🧠 Storyblok-struktur
-
-**Content Types:**
-- `Page`
-- `ProductPage`
-- `Config`
-
-**Layout Components:**
-- `Header`
-- `Footer`
-- `TopStrip`
-
-**Nestade komponenter:**
-- `ProductList`
-- `LatestProductsList`
-- `SearchBar`
-- `ImageBanner`
-- `Hero`
-- `ImageWithText`
-- `ShopMenu`
-
-Alla komponenter mappas i `lib/storyblok.js`:
-```js
-export const components = {
-  page: Page,
-  header: Header,
-  footer: Footer,
-  hero: Hero,
-  productList: ProductList,
-  latestProductsList: LatestProductsList,
-  imageBanner: ImageBanner,
-  imageWithText: ImageWithText,
-  topStrip: TopStrip,
-  searchBar: SearchBar,
-  productGrid: ProductGrid,
-  productsGrid: ProductsGrid,
-};
