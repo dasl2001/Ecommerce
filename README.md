@@ -50,7 +50,8 @@ export const components = {
 
 ---
 
-**## Storyblok-struktur**
+
+## Filstruktur ##
 
 ```text
 cms-grupparbete/
@@ -118,4 +119,6 @@ cms-grupparbete/
 ├── package.json
 ├── README.md
 └── tailwind.config.js
+
+
 
