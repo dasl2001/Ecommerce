@@ -48,9 +48,7 @@ export const components = {
   productsGrid: ProductsGrid,
 };
 
----
 
-<img width="69" height="325" alt="10" src="https://github.com/user-attachments/assets/b06ddadc-58b8-495d-9c12-b1cf81398494" />
 
 
 
