@@ -1,4 +1,4 @@
-# E-commerce med Next.js & Storyblok
+# Ecommerce med Next.js och Storyblok
 
 Webbplatsen är uppbyggd med:
 - **Next.js (App Router)**
@@ -8,7 +8,6 @@ Webbplatsen är uppbyggd med:
 - **Vercel** (Deployment)
 
 ---
-
 
 ## 🚀 Tekniker
 
@@ -23,30 +22,28 @@ Webbplatsen är uppbyggd med:
 
 ---
 
-
 ## 📂 Filstruktur
 
 Här är hela projektets struktur, baserat på den färdiga implementationen:
 
 ```text
-cms-grupparbete/
 ├── app/
 │   ├── about/
-│   │   └── page.js                      # About-sida
+│   │   └── page.js                     
 │   ├── api/
 │   │   └── search/
-│   │       └── route.js                 # API för produktsök (VG)
+│   │       └── route.js                 
 │   ├── home/
-│   │   └── page.js                      # Startsida
+│   │   └── page.js                      
 │   ├── products/
-│   │   ├── [...slug]/page.js            # Produktdetaljer
-│   │   └── page.js                      # Produktlista
-│   ├── layout.js                        # Global layout (hämtar Config-story)
-│   ├── sitemap.js                       # Sitemap genererad från Storyblok Links API
-│   └── robots.js                        # Robots.txt
+│   │   ├── [...slug]/page.js            
+│   │   └── page.js                      
+│   ├── layout.js                        
+│   ├── sitemap.js                       
+│   └── robots.js                        
 │
 ├── components/
-│   └── sb/                              # Storyblok-komponenter (alla React-komponenter)
+│   └── sb/                              
 │       ├── AddToCartButton.js
 │       ├── DoesNotExist.js
 │       ├── Feature.js
@@ -69,28 +66,16 @@ cms-grupparbete/
 │       ├── StoryBlokProvider.js
 │       ├── Teaser.js
 │       ├── TopStrip.js
-│       └── index.js                     # (valfri barrel-fil)
+│       └── index.js                     
 │
 ├── lib/
-│   ├── fetchers.js                      # Hämtar stories & produkter från Storyblok
-│   ├── richtextToPlain.js               # Konverterar richtext till plain text
-│   └── storyblok.js                     # Storyblok-init & komponentmappning
+│   ├── fetchers.js                      
+│   ├── richtextToPlain.js               
+│   └── storyblok.js                     
 │
 ├── utils/
-│   └── safeRichText.js                  # Säker render av richtext
+│   └── safeRichText.js                  
 │
-├── public/
-│   ├── docs/
-│   │   └── Gruppuppgift och Individuelluppgift.pdf
-│   └── images/
-│       └── pdf/
-│           ├── komponentstruktur.png
-│           ├── krav-g.png
-│           ├── krav-vg.png
-│           ├── storyblok-content.png
-│           └── blocks.png
-│
-├── .env.local.example
 ├── .gitignore
 ├── package.json
 ├── README.md
