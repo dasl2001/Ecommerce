@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { cn } from "../utils/cn";
-
 export default function NotFound() {
   return (
     <div
@@ -15,7 +14,6 @@ export default function NotFound() {
           "animate-fade-in"
         )}
       >
-        {/* 404 Number */}
         <div
           className={cn(
             "text-8xl font-bold text-transparent bg-clip-text",
@@ -25,15 +23,11 @@ export default function NotFound() {
         >
           404
         </div>
-
-        {/* Main heading */}
         <h1
           className={cn("text-3xl font-bold text-slate-800", "leading-tight")}
         >
           Page Not Found
         </h1>
-
-        {/* Description */}
         <p
           className={cn(
             "text-slate-600 text-lg leading-relaxed",
@@ -65,8 +59,6 @@ export default function NotFound() {
             Return Home
           </Link>
         </div>
-
-        {/* Decorative element */}
         <div className={cn("flex justify-center pt-8 opacity-60")}>
           <div
             className={cn(
