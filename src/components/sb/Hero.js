@@ -7,7 +7,6 @@ export default function Hero({ blok, story }) {
     const t = blok?.text;
     if (!t) return null;
     if (typeof t === "object" && Array.isArray(t.content)) {
-      // Rich Text
       return (
         <div className="mt-2 text-sm text-neutral-600 max-w-3xl mx-auto relative z-20">
           {renderRichText(t)}
