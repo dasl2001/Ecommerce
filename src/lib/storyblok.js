@@ -1,7 +1,4 @@
-
 import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
-
-
 import Page from "@/components/sb/Page";
 import Teaser from "@/components/sb/Teaser";
 import Feature from "@/components/sb/Feature";
@@ -20,8 +17,6 @@ import TopStrip from "@/components/sb/TopStrip";
 import AddToCartButton from "@/components/sb/AddToCartButton";
 import ShopMenu from "@/components/sb/ShopMenu";
 import ProductsGrid from "@/components/sb/ProductsGrid";
-
-
 export const components = {
   page: Page,
   feature: Feature,
@@ -42,8 +37,6 @@ export const components = {
   ShopMenu: ShopMenu,
   ProductsGrid: ProductsGrid,
 };
-
-// Initiera Storyblok en gång
 export const getStoryblokApi = storyblokInit({
 	accessToken: process.env.STORYBLOK_DELIVERY_API_ACCESS_TOKEN || process.env.NEXT_PUBLIC_STORYBLOK_DELIVERY_API_ACCESS_TOKEN,
 	use: [apiPlugin],
@@ -52,8 +45,6 @@ export const getStoryblokApi = storyblokInit({
 	},
     components
 });
-
-
 export function getStoryblokVersion() {
   return process.env.NODE_ENV !== "production" ? "draft" : "published"
 }
