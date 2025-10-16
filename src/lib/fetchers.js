@@ -1,16 +1,8 @@
 import { getStoryblokApi } from "@storyblok/react";
-
-/**
- * Hämta en specifik story (ex: home, products, about, config)
- */
 export async function fetchStory(slug, version = "draft") {
   const { data } = await getStoryblokApi().get(`cdn/stories/${slug}`, { version });
   return data?.story;
 }
-
-/**
- * Hämta alla produkter i en folder (default "products/")
- */
 export async function fetchFolderProducts(folder = "products", opts = {}) {
   const { data } = await getStoryblokApi().get("cdn/stories", {
     starts_with: `${folder}/`,
