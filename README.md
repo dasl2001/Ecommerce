@@ -1,7 +1,5 @@
 # E-commerce med Next.js & Storyblok
 
-Detta repo innehåller en **e-commerce-webbplats** 
-
 Webbplatsen är uppbyggd med:
 - **Next.js (App Router)**
 - **React 19**
@@ -32,64 +30,64 @@ Här är hela projektets struktur, baserat på den färdiga implementationen:
 
 cms-grupparbete/
 ├─ app/
-│ ├─ about/
-│ │ └─ page.js # About-sida
-│ ├─ api/
-│ │ └─ search/
-│ │ └─ route.js # API för produktsök (VG)
-│ ├─ home/
-│ │ └─ page.js # Startsida
-│ ├─ products/
-│ │ ├─ [...slug]/page.js # Produktdetaljer
-│ │ └─ page.js # Produktlista
-│ ├─ layout.js # Global layout (hämtar Config-story)
-│ ├─ sitemap.js # Sitemap genererad från Storyblok Links API
-│ └─ robots.js # Robots.txt
+│  ├─ about/
+│  │  └─ page.js                      # About-sida
+│  ├─ api/
+│  │  └─ search/
+│  │     └─ route.js                  # API för produktsök (VG)
+│  ├─ home/
+│  │  └─ page.js                      # Startsida
+│  ├─ products/
+│  │  ├─ [...slug]/page.js            # Produktdetaljer
+│  │  └─ page.js                      # Produktlista
+│  ├─ layout.js                       # Global layout (hämtar Config-story)
+│  ├─ sitemap.js                      # Sitemap genererad från Storyblok Links API
+│  └─ robots.js                       # Robots.txt
 │
 ├─ components/
-│ └─ sb/ # Storyblok-komponenter (alla React-komponenter)
-│ ├─ AddToCartButton.js
-│ ├─ DoesNotExist.js
-│ ├─ Feature.js
-│ ├─ Footer.js
-│ ├─ Grid.js
-│ ├─ Header.js
-│ ├─ Hero.js
-│ ├─ ImageBanner.js
-│ ├─ ImageWithText.js
-│ ├─ LatestProductsList.js
-│ ├─ Page.js
-│ ├─ ProductCard.js
-│ ├─ ProductGrid.js
-│ ├─ ProductList.js
-│ ├─ ProductMenu.js
-│ ├─ ProductsGrid.js
-│ ├─ SearchBar.js
-│ ├─ ServerComponent.js
-│ ├─ ShopMenu.js
-│ ├─ StoryBlokProvider.js
-│ ├─ Teaser.js
-│ ├─ TopStrip.js
-│ └─ index.js (om det finns)
+│  └─ sb/                             # Storyblok-komponenter (alla React-komponenter)
+│     ├─ AddToCartButton.js
+│     ├─ DoesNotExist.js
+│     ├─ Feature.js
+│     ├─ Footer.js
+│     ├─ Grid.js
+│     ├─ Header.js
+│     ├─ Hero.js
+│     ├─ ImageBanner.js
+│     ├─ ImageWithText.js
+│     ├─ LatestProductsList.js
+│     ├─ Page.js
+│     ├─ ProductCard.js
+│     ├─ ProductGrid.js
+│     ├─ ProductList.js
+│     ├─ ProductMenu.js
+│     ├─ ProductsGrid.js
+│     ├─ SearchBar.js
+│     ├─ ServerComponent.js
+│     ├─ ShopMenu.js
+│     ├─ StoryBlokProvider.js
+│     ├─ Teaser.js
+│     ├─ TopStrip.js
+│     └─ index.js                     # (om ni använder en barrel-fil)
 │
 ├─ lib/
-│ ├─ fetchers.js # Hämtar stories & produkter från Storyblok
-│ ├─ richtextToPlain.js # Konverterar richtext till plain text
-│ └─ storyblok.js # Storyblok-init & komponentmappning
+│  ├─ fetchers.js                     # Hämtar stories & produkter från Storyblok
+│  ├─ richtextToPlain.js              # Konverterar richtext till plain text
+│  └─ storyblok.js                    # Storyblok-init & komponentmappning
 │
 ├─ utils/
-│ └─ safeRichText.js # Säker render av richtext
+│  └─ safeRichText.js                 # Säker render av richtext
 │
 ├─ public/
-│ ├─ docs/
-│ │ └─ Gruppuppgift och Individuelluppgift.pdf
-│ └─ images/
-│ └─ pdf/
-│ ├─ komponentstruktur.png
-│ ├─ krav-g.png
-│ ├─ krav-vg.png
-│ ├─ storyblok-content.png
-│ └─ blocks.png
+│  ├─ docs/
+│  │  └─ Gruppuppgift och Individuelluppgift.pdf
+│  └─ images/
+│     └─ pdf/
+│        ├─ komponentstruktur.png
+│        ├─ krav-g.png
+│        ├─ krav-vg.png
+│        ├─ storyblok-content.png
+│        └─ blocks.png
 │
 ├─ .env.local.example
 ├─ .gitignore
